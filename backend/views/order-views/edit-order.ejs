@@ -1,0 +1,58 @@
+<%- include ('./../partials/header.ejs'); -%>
+    <div class="container">
+        <% if (message != '') { %>
+            <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <% if (order) { %>
+        <form class="add-pizza-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-group col-md-6">
+                <select id="pizzaName" name="pizzaName" class="form-control" required>
+                    <option selected><%= order.pizzaName %></option>
+                    <% if (pizzas.length > 0) {%>
+                        <% pizzas.forEach((pizza, index) => { %>
+                            <option><%= pizza.pizza_name %></option>
+                            <!-- <input type="hidden" id="price" value="<%= pizza.pizza_price %>"> -->
+                        <% }) %>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="customer_name" id="customer_name" value="<%= order.customer_name %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="customer_adress" id="customer_adress" value="<%= order.customer_adress %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="gps_latitude" id="gps_latitude" value="<%= order.gps_latitude %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="gps_longitude" id="gps_longitude" value="<%= order.gps_longitude %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="number" class="form-control" name="order_amount" id="order_amount" value="">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Edit Order</button>
+        </form>
+    </div>
+    <script>
+        //  function insertPrice() {
+        //     const price = document.getElementById('price').value;
+        //     console.log(price);
+        //  }
+        // const orderAmount = document.getElementById('price').value;
+        // document.getElementById('order_amount').setAttribute('value', orderAmount);
+        
+    </script>
+    <% } %>
+        
+<%- include ('./../partials/footer.ejs'); -%>

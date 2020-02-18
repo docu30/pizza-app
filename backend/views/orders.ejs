@@ -1,0 +1,51 @@
+<%- include ('partials/header.ejs'); -%>
+    <div class="row">
+        <div class="table-wrapper">
+            <h1>Orders</h1>
+            <div class="table-wrapper">
+                <a href="/add-order" >Add Order</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="table-wrapper">
+                <% if (orders.length > 0) {%>
+                <table class="table table-hovered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Pizza name</th>
+                            <th scope="col">Customer name</th>
+                            <th scope="col">Customer adress</th>
+                            <th scope="col">GPS latitude</th>
+                            <th scope="col">GPS longitude</th>
+                            <th scope="col">Order amount</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% orders.forEach((order, index) => { %>
+                            <tr>
+                                <th scope="row"><%= order.id %></th>
+                                <td><%= order.pizzaName %></td>
+                                <td><%= order.customer_name %></td>
+                                <td><%= order.customer_adress %></td>
+                                <td><%= order.gps_latitude %></td>
+                                <td><%= order.gps_longitude %></td>
+                                <td><%= order.order_amount %></td>
+                                <td>
+                                    <a href="/edit-order/<%= order.id %>" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                    <a href="/delete-order/<%= order.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <p class="text-center">No order found. Go <a href="/add-order">here</a> to add an order.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+<%- include ('partials/footer.ejs'); -%>
