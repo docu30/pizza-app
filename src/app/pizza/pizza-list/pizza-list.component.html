@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row" *ngIf="pizzas.length > 0">
+    <div class="col-md-3" *ngFor="let pizza of pizzas">
+      <mat-card class="example-card">
+        <mat-card-header>
+        <mat-card-title>{{ pizza.pizza_name}}</mat-card-title>
+        </mat-card-header>
+      <img mat-card-image [src]="pizza.image"alt="{{pizza.pizza_name}}">
+        <mat-card-content>
+          <p>
+            {{pizza.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>ORDER</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
